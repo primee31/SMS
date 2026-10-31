@@ -1,0 +1,24 @@
+{
+  "name": "brightloop-sms",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run worker\"",
+    "dev:frontend": "npm --workspace frontend run dev",
+    "dev:backend": "npm --workspace backend run dev",
+    "worker": "npm --workspace backend run worker",
+    "db:local": "node backend/local_db.js",
+    "db:migrate": "npm --workspace backend run migrate",
+    "db:seed": "npm --workspace backend run seed",
+    "test": "npm --workspace backend run test",
+    "build": "npm --workspace frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
