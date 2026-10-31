@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Brightloop Subscription Management System (SMS)
 
 **Brightloop SMS** is an enterprise-grade subscription management and recurring billing platform built entirely in **JavaScript (ES Modules)**. It enables businesses to manage products and configurable variants, define billing plans, generate quotations, automate recurring billing and invoicing, record payments, and provide role-isolated portals for administrators, staff, and customers.
@@ -139,3 +140,83 @@ npm run build
 - [DATABASE_SCHEMA.md](file:///f:/ai/sms/shared/DATABASE_SCHEMA.md) - Complete entity relationship and model dictionary.
 - [API_CONTRACT.md](file:///f:/ai/sms/shared/API_CONTRACT.md) - Detailed request and response examples for all API endpoints.
 - [PROJECT_RULES.md](file:///f:/ai/sms/shared/PROJECT_RULES.md) - Engineering rules, security constraints, and architectural guidelines.
+=======
+# SMS
+# Brightloop Subscription Management System (SMS)
+
+**Brightloop SMS** is an enterprise‑grade, full‑stack subscription management platform built with **JavaScript only**. It supports product & plan configuration, quotations, subscription lifecycles, recurring billing, invoicing, taxes, discounts, payments, analytics and a customer portal – all without any external SaaS APIs.
+
+## Technology Stack
+- **Frontend**: React 19, Vite, Tailwind CSS, shadcn/ui, Lucide, React Router 7, Axios, React‑Hook‑Form, Zod
+- **Backend**: Node 22+, Express 5, PostgreSQL (Neon or local), Prisma ORM, JWT, bcryptjs, Zod
+- **Background Jobs**: Redis, BullMQ, node‑cron (worker process)
+- **Testing**: Vitest, Supertest, Playwright
+- **Containerisation**: Docker‑Compose (Redis, optional PostgreSQL)
+
+## Repository Structure
+```
+subscription-management-system/
+  frontend/
+    ...
+  backend/
+    ...
+  shared/
+    API_CONTRACT.md
+    DATABASE_SCHEMA.md
+    PROJECT_RULES.md
+  docker-compose.yml
+  package.json
+  .gitignore
+  README.md
+```
+
+## Prerequisites
+- Node 22+ (npm 10+)
+- Docker Desktop (for Redis & optional PostgreSQL)
+- PostgreSQL instance (local or Neon) – see `.env.example`
+
+## Quick Start (Development)
+```bash
+# Install dependencies for all packages
+npm run install:all
+
+# Set up environment variables
+cp backend/.env.example backend/.env
+cp frontend/.env.example frontend/.env
+# Edit the .env files with your DB credentials
+
+# Run database migrations and seed data
+npm run db:migrate
+npm run db:seed
+
+# Start the whole stack (frontend, backend, worker)
+npm run dev
+```
+- Frontend runs at **http://localhost:5173**
+- Backend API at **http://localhost:4000/api/v1**
+- Worker process logs background jobs.
+
+## Scripts
+| Script | Description |
+|--------|-------------|
+| `install:all` | Installs dependencies for root, frontend and backend |
+| `dev` | Starts frontend, backend and worker concurrently |
+| `dev:frontend` | Starts Vite dev server |
+| `dev:backend` | Starts Express server |
+| `worker` | Starts BullMQ worker process |
+| `db:migrate` | Runs Prisma migrations |
+| `db:seed` | Executes seed script |
+| `test` | Runs all Vitest, Supertest and Playwright tests |
+| `build` | Builds frontend for production |
+
+## Production Build
+```bash
+npm run build   # builds frontend assets
+# Deploy backend (Node) and serve built static files via any static server or CDN.
+```
+
+## Documentation
+- **API contract** – `shared/API_CONTRACT.md`
+- **Database schema** – `shared/DATABASE_SCHEMA.md`
+- **Project rules** – `shared/PROJECT_RULES.md`
+>>>>>>> 273eb49be7302666d0ff6070584877ca75f99098
